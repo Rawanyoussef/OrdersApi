@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Orders.Data.Entity;
+using Orders.Services.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace Orders.Services.DTO
     {
         public OrderProfile() 
         {
-            CreateMap<Order, OrderDto>().ReverseMap();
-            CreateMap<OrderCreateDto, Order>().ReverseMap();
+            CreateMap<Order, OrderDto>().ForMember(d => d.OrderId, o => o.MapFrom(s => s.Id)); ;
+            CreateMap<OrderCreateDto, Order>();
         }
     }
 }
