@@ -30,7 +30,10 @@ namespace OrdersApi
             builder.Services.AddScoped<ICacheService, CacheService>();
 
             // AutoMapper
-            builder.Services.AddAutoMapper(typeof(OrderProfile));
+            // builder.Services.AddAutoMapper(typeof(OrderProfile));
+            builder.Services.AddAutoMapper(cfg => {
+                cfg.AddProfile<OrderProfile>();
+            });
 
             // Redis
             builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
